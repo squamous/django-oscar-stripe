@@ -1,5 +1,5 @@
+from django.apps import apps
 from django.conf import settings
-from django.db.models import get_model
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
@@ -10,8 +10,8 @@ from . import PAYMENT_METHOD_STRIPE, PAYMENT_EVENT_PURCHASE, STRIPE_EMAIL, STRIP
 
 import forms
 
-SourceType = get_model('payment', 'SourceType')
-Source = get_model('payment', 'Source')
+SourceType = apps.get_model('payment', 'SourceType')
+Source = apps.get_model('payment', 'Source')
 
 
 class PaymentDetailsView(CorePaymentDetailsView):

@@ -3,13 +3,13 @@ from oscar.apps.payment.exceptions import UnableToTakePayment, InvalidGatewayReq
 from django.utils import timezone
 
 import stripe
-from django.db.models import get_model
+from django.apps import apps
 import logging
 
 
 logger = logging.getLogger(__name__)
-Source = get_model('payment', 'Source')
-Order = get_model('order', 'Order')
+Source = apps.get_model('payment', 'Source')
+Order = apps.get_model('order', 'Order')
 
 class Facade(object):
     def __init__(self):
